@@ -6,6 +6,25 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+
+from items import information_ScrapyItem,content_ScrapyItem
+import codecs
+import json
+from spiderman import Spider_Aim
+
+class JsonWriterPipeline(object):
+    """Pipeline for writing to a file in JSON like notation"""
+    def __init__(self):
+        self.file = codecs.open('%s_content.json' % Spider_Aim, 'ab','utf-8')
+
+    def process_item(self, item, spider):
+        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+        self.file.write(line)
+        # self.file.close()
+        return item
+
+
 # import MySQLdb
 # from items import information_ScrapyItem,content_ScrapyItem
 #
