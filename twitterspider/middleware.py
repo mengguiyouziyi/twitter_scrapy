@@ -50,18 +50,37 @@ class CheckMiddleware(object):
             print '爬虫重新启动中'
             return request.replace(url=request_url)
 
+# 代理服务器
+proxyServer = "http://proxy.abuyun.com:9020"
+
+# 代理隧道验证信息
+proxyUser = "H47LC8277H5QX99D"
+proxyPass = "D906E0DC0DBF2D37"
+
+# for Python2
+proxyAuth = "Basic " + base64.b64encode(proxyUser + ":" + proxyPass)
+
+# for Python3
+# proxyAuth = "Basic " + base64.urlsafe_b64encode(bytes((proxyUser + ":" + proxyPass), "ascii")).decode("utf8")
 
 class ProxyMiddleware(object):
-
     def process_request(self, request, spider):
-        proxy = random.choice(PROXIES)
-        if proxy['user_pass'] is not None:
-            request.meta['proxy'] = "http://%s" % proxy['ip_port']
-            request.meta['proxy'] = "https://%s" % proxy['ip_port']
-            encoded_user_pass = base64.encodestring(proxy['user_pass'])
-            request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
-            print "**************ProxyMiddleware have pass************" + proxy['ip_port']
-        else:
-            print "**************ProxyMiddleware no pass************" + proxy['ip_port']
-            request.meta['proxy'] = "http://%s" % proxy['ip_port']
-            print "获取请求头"
+        request.meta["proxy"] = proxyServer
+        request.headers["Proxy-Authorization"] = proxyAuth
+
+
+
+# class ProxyMiddleware(object):
+#
+#     def process_request(self, request, spider):
+#         proxy = random.choice(PROXIES)
+#         if proxy['user_pass'] is not None:
+#             request.meta['proxy'] = "http://%s" % proxy['ip_port']
+#             request.meta['proxy'] = "https://%s" % proxy['ip_port']
+#             encoded_user_pass = base64.encodestring(proxy['user_pass'])
+#             request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
+#             print "**************ProxyMiddleware have pass************" + proxy['ip_port']
+#         else:
+#             print "**************ProxyMiddleware no pass************" + proxy['ip_port']
+#             request.meta['proxy'] = "http://%s" % proxy['ip_port']
+#             print "获取请求头"
