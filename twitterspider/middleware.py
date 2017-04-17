@@ -67,6 +67,8 @@ class ProxyMiddleware(object):
     def process_request(self, request, spider):
         request.meta["proxy"] = proxyServer
         request.headers["Proxy-Authorization"] = proxyAuth
+        print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~我用的是阿布云代理服务器~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+
 
 
 

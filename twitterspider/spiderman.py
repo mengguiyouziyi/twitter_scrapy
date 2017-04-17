@@ -8,4 +8,4 @@
 # Spider_Aim = "realdonaldtrump"
 # Spider_Aim = "BBCNews"
 # Spider_Aim = "Reuters"
-Spider_Aim = "nytimes"
+Spider_Aim = "WSJ"

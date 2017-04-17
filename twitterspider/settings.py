@@ -37,7 +37,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Referer': "https://www.google.com/"
 }
 #禁用cookies
-COOKIES_ENABLES=False
+COOKIES_ENABLED=False
 # SPIDER_MIDDLEWARES = {
 # 'scrapy.contrib.spidermiddleware.referer.RefererMiddleware': True,
 # }
@@ -72,6 +72,8 @@ RANDOMIZE_DOWNLOAD_DELAY = True  # 开启随机延迟
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
+
+LOG_STDOUT = True
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
