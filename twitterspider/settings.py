@@ -28,7 +28,8 @@ ITEM_PIPELINES = {
 }
 #代理设置(最好使用墙外代理IP池,可减少重定向次数)
 PROXIES = [
-    {'ip_port': '127.0.0.1:9999','user_pass':None},
+    {'ip_port': '92.222.146.67:9999','user_pass':''},
+    {'ip_port': '111.13.7.122:80','user_pass':''},
 ]
 
 DEFAULT_REQUEST_HEADERS = {

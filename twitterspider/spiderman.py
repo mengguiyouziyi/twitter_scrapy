@@ -5,4 +5,5 @@
 
 # Spider_Aim = "BarackObama"
 # Spider_Aim = "love_zkr"
-Spider_Aim = "realdonaldtrump"
+# Spider_Aim = "realdonaldtrump"
+Spider_Aim = "BBCNews"
