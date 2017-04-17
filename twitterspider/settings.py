@@ -25,6 +25,7 @@ DOWNLOADER_MIDDLEWARES = {
 #数据库管道处理
 ITEM_PIPELINES = {
     # 'twitterspider.pipelines.information_Pipeline': 300
+    'twitterspider.pipelines.JsonWriterPipeline': 300
 }
 #代理设置(最好使用墙外代理IP池,可减少重定向次数)
 PROXIES = [
