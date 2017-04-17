@@ -50,22 +50,15 @@ class CheckMiddleware(object):
             print '爬虫重新启动中'
             return request.replace(url=request_url)
 
-# 代理服务器
-proxyServer = "http://proxy.abuyun.com:9020"
-
-# 代理隧道验证信息
-proxyUser = "H47LC8277H5QX99D"
-proxyPass = "D906E0DC0DBF2D37"
-
-# for Python2
-proxyAuth = "Basic " + base64.b64encode(proxyUser + ":" + proxyPass)
-
-# for Python3
-# proxyAuth = "Basic " + base64.urlsafe_b64encode(bytes((proxyUser + ":" + proxyPass), "ascii")).decode("utf8")
-
 class ProxyMiddleware(object):
     def process_request(self, request, spider):
-        request.meta["proxy"] = proxyServer
+        # 代理隧道验证信息
+        proxyUser = "H47LC8277H5QX99D"
+        proxyPass = "D906E0DC0DBF2D37"
+
+        # for Python2
+        proxyAuth = "Basic " + base64.b64encode(proxyUser + ":" + proxyPass)
+        request.meta["proxy"] = "http://proxy.abuyun.com:9020"
         request.headers["Proxy-Authorization"] = proxyAuth
         print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~我用的是阿布云代理服务器~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
